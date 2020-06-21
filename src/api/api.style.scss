@@ -1,0 +1,108 @@
+.box {
+    margin-left: 50px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 680px;
+    height: 225px;
+    background: #F8F8F8;
+    border-radius: 20px;
+    .box-icon {
+        display: flex;
+        height: 25%;
+        width: 90%;
+        justify-content: flex-end;
+        align-items: flex-end;
+        
+    }
+    .box-component {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 90%;
+        height: 55%;
+        // border: 1px solid red;
+        .icon{
+            display: flex;
+            margin-right: 3%;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #fff;
+        }
+        .context{
+            //border: 1px solid red;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            .context-url{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                height: 14px;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 10px;
+                line-height: 14px;
+                color: #ABABAB;
+                //border: 1px solid red;
+                a {
+                    color:#8EA7FF;
+                    text-decoration:underline;
+                    font-weight: 900;
+                }
+            }
+            .context-text{
+                width: 540px;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 18px;
+                line-height: 26px;
+                color: #333333;
+            }
+            .box-data {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                margin-top: auto;
+                justify-content: space-between;
+                align-items: flex-end;
+                .describe{
+                    height: 14px;
+                    font-family: Roboto;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 10px;
+                    line-height: 14px;
+                    color: #ABABAB;
+                }
+                .categories{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 107px;
+                    height: 24px;
+                    background: #FFFFFF;
+                    border-radius: 6px;
+                    font-family: Roboto;
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 10px;
+                    line-height: 14px;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                }
+            }
+        }
+        
+    }
+    
+    .box-text {
+
+    }
+}

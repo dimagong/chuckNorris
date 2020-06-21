@@ -1,26 +1,57 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux'
 
-function App() {
+import actionData from './Redux/actions/actionData'
+
+import LayoutComponent from './UIkit/layout/layout.component'
+
+const App = ({ endpoint, actionData}) => {
+
+  useEffect(
+    ()=>{
+        getRequest()
+    }
+  )
+
+
+  const getRequest = async () => {
+
+        const point = `/jokes/${endpoint}`
+        const url = `https://api.chucknorris.io${point}`
+
+        try {
+          const response = await fetch(url)
+          let ansver = await response.json()
+          if (ansver.result) {
+              ansver.result.forEach(element => {
+              actionData(element)
+            });
+          } else if(ansver.status !== 404) actionData(ansver)
+      } catch (error) {
+        console.log('ERROR REQUEST!!!')
+        throw error;
+      }
+    }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div>
+      <LayoutComponent />
+    </div >
   );
 }
 
-export default App;
+
+
+const mapStateToProps = (store) => {
+  return {
+    endpoint: store.reducerRequest.endpoint,
+  }
+}
+
+const mapDispatchToProps = {
+  actionData: actionData
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
