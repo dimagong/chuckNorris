@@ -24,7 +24,7 @@ const BigCart = ({ id, value, updated_at, categories, onChouseFavorite }) => {
     return (
         <div className='boxcart'>
             <div className='boxcart-icon' onClick={reversFlagAndFavorite}>
-                {flag? <Favorite color="secondary" /> : <FavoriteBorderIcon style={{ color: '#FF6767' }} />}
+                {flag ? <Favorite color="secondary" /> : <FavoriteBorderIcon style={{ color: '#FF6767' }} />}
             </div>
             <div className='boxcart-component'>
                 <div className='icon-boxcart-container'>

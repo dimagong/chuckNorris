@@ -3,9 +3,9 @@ import {connect} from 'react-redux'
 
 import BigCart from '../UIkit/bigCart/bigCart'
 import actionFavorite from '../Redux/actions/actionFavorite'
+//import actionDataFavorite from '../Redux/actions/actionDataFavotite'
 
-
-const JokeComponent = ({data, actionFavorite, favorite}) => {
+const JokeComponent = ({data, actionFavorite, actionDataFavorite, favorite}) => {
 
     let dataChoose = [...data]
 
@@ -22,6 +22,7 @@ const JokeComponent = ({data, actionFavorite, favorite}) => {
 
     const onChouseFavorite = (elem) => {
          actionFavorite(elem)
+        // actionDataFavorite(elem)
     }
 
     const listData = dataChoose.map((elem)=>{
@@ -57,6 +58,7 @@ const mapStateToProps = (store)=>{
 
 const mapToDispatchToProps = {
         actionFavorite: actionFavorite,
+        //actionDataFavorite: actionDataFavorite,
 }
 
 export default connect(mapStateToProps, mapToDispatchToProps)(JokeComponent)

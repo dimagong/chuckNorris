@@ -4,32 +4,37 @@ import { connect } from 'react-redux'
 import FavoriteCart from '../UIkit/favoriteCart/favoriteCart'
 import actionDataFavorite from '../Redux/actions/actionDataFavotite'
 
-const FavoriteComponent = ({ favorite, favoriteData, actionDataFavorite }) => {
-    //const { id, value, updated_at, categories } = favorite;
-
-    const coincidence = favoriteData.find((elem) => elem.value === favorite.value)
+const FavoriteComponent = ({ favorite, favoriteList, actionDataFavorite }) => {
+    
+    const coincidence = favoriteList.find(
+        (elem, i) => elem.value === favorite.value 
+        )
 
     useEffect(()=>{
         if(!coincidence){
-            actionDataFavorite([...favoriteData, favorite])
+            actionDataFavorite([...favoriteList, favorite]) 
+        }
+        else if(favorite == favoriteList.slice(-1)[0]){
+            actionDataFavorite([...favoriteList]) 
         }
         else{
-            let upData = favoriteData.filter((el) => el.value  !==  favorite.value  )
-            actionDataFavorite([...upData])
+            let clearData = favoriteList.filter((el) => el.value  !==  favorite.value  )
+            actionDataFavorite(clearData)
         }
     },
-    [favorite]
-    )
+    []
+    );
     
-    const favoriteElement = favoriteData.map((item) => {
+    const favoriteElement = favoriteList.map((item) => {
         if(item.value){
             return (<div key={item.id}>
                 <FavoriteCart id={item.id} value={item.value} updated_at={item.updated_at} categories={item.categories} />
             </div>)
-        }
+        } 
         
     })
     return (<div>
+       
         {favoriteElement}
     </div>)
 }
@@ -37,7 +42,7 @@ const FavoriteComponent = ({ favorite, favoriteData, actionDataFavorite }) => {
 const mapStateToProps = (store) => {
     return {
                 favorite: store.reducerFavorite.favorite,
-                favoriteData: store.reducerDataFavorite.list_favorite
+                favoriteList: store.reducerDataFavorite.list_favorite
             }
 }
 

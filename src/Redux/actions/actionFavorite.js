@@ -1,8 +1,8 @@
-import {ADD_FAVORITE} from '../constants'
+import {GET_NEW_FAVORITE} from '../constants'
 
 const actionFavorite = (item) => {
     return ({
-        type: ADD_FAVORITE,
+        type: GET_NEW_FAVORITE,
         favorite: item
     })
 }

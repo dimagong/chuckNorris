@@ -9,7 +9,7 @@ const reducerDataFavorite = (state = INITIAL_FAVORITE, action ) => {
     switch (action.type) {
         case ADD_DATA_FAVORITE:
             return({
-                ...state,
+                //...state,
                 list_favorite: [...action.data_favorite]
             })
         default:
