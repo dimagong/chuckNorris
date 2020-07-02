@@ -15,9 +15,7 @@ const JokeComponent = ({data, actionFavorite, actionDataFavorite, favoriteList, 
             if(ferst.id === dataChoose[k].id){
                 dataChoose.splice(k,k)
             }
-             
         }
-
     }
 
     const onChouseFavorite = (elem) => {
@@ -37,7 +35,7 @@ const JokeComponent = ({data, actionFavorite, actionDataFavorite, favoriteList, 
             
                 
             }
-            else if( item == favoriteList.slice(-1)[0]){
+            else if( item === favoriteList.slice(-1)[0]){
                 actionDataFavorite([...favoriteList]) 
                 
             }

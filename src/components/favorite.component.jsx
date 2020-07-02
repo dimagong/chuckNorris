@@ -9,18 +9,27 @@ const FavoriteComponent = ({ actionDataFavorite, favoriteList }) => {
     const [favoriteData, onFavoriteData] = useState([])
 
     useEffect(() => {
-        console.log('GET LOCALSTORAGE')
         let data = JSON.parse(localStorage.getItem('favoriteListLocal'))
-        if (!data) {
+        if (!data || !data[0]) {
             data = favoriteList
+            actionDataFavorite(data);
+            onFavoriteData(data);
+        } else {
+            let dataUp = [...data, ...favoriteList]
+            for (let i = 0; i < dataUp.length; i++) {
+                let ferst = dataUp[i]
+                for (let k = i + 1; k < dataUp.length; k++) {
+                    if (ferst.id === dataUp[k].id) {
+                        dataUp.splice(k, k)
+                    }
+                }
+            }
+            actionDataFavorite(dataUp);
+            onFavoriteData(dataUp);
         }
-        actionDataFavorite(data);
-        onFavoriteData(data);
     }, [])
 
     useEffect(() => {
-        console.log('SET LOCALSTORAGE')
-        console.log('favoriteList 222222', favoriteList)
         localStorage.setItem('favoriteListLocal', JSON.stringify(favoriteList))
         if (favoriteList[0]) { onFavoriteData(favoriteList) };
     }, [favoriteList])
@@ -32,7 +41,6 @@ const FavoriteComponent = ({ actionDataFavorite, favoriteList }) => {
                 <FavoriteCart id={item.id} value={item.value} updated_at={item.updated_at} categories={item.categories} />
             </div>)
         }
-
     })
 
     return (<div>

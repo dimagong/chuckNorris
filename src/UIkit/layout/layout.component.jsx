@@ -18,7 +18,6 @@ import FavoriteComponent from '../../components/favorite.component'
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        border: '10px solid black',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
@@ -30,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
         position: 'relative',
     },
     root_dark: {
-        border: '10px solid black',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
@@ -42,46 +40,44 @@ const useStyles = makeStyles((theme) => ({
         position: 'relative',
     },
     left_block: {
-        border: '2px solid red',
-        minHeight: '100%',
         width: '100%',
         [theme.breakpoints.only('xs')]: {
-            paddingLeft: '40px',
-            //minWidth: '100%',
-            minHeight: '100%',
-            width: '100%',
+            paddingLeft: '20px',
+            paddingRight: '20px',
         },
         [theme.breakpoints.only('sm')]: {
             paddingLeft: '40px',
-            minHeight: '100%',
-            width: '100%',
+            paddingRight: '40px',
             flexWrap: 'nowrap',
         },
         [theme.breakpoints.up('md')]: {
             paddingLeft: '140px',
-            width: '65%',
-            minHeight: '100%',
+            paddingRight: '100px',
+            width: '60%',
         },
     },
-    // left_content_hidden: {
-    //     [theme.breakpoints.only('xs')]: {
-    //         //display: 'none',
-    //         width: '100vw',
-    //     },
-    // },
     container: {
-        //border: '5px solid purple',
         paddingTop: 40,
         flexDirection: 'row',
         alignItems: 'center',
+        justifyContent: 'space-between',
         flexWrap: 'nowrap',
-        //justifyContent:'space-between',
     },
     header: {
+        display: 'flex',
         fontWeight: 'bold',
         fontSize: '20px',
         lineHeight: '20px',
         color: '#333333',
+        flexWrap: 'nowrap',
+        width: '200px',
+    },
+    box_container: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        flexWrap: 'nowrap',
+        zIndex: '2',
     },
     header_text: {
         paddingTop: 100,
@@ -96,74 +92,54 @@ const useStyles = makeStyles((theme) => ({
         lineHeight: '44px',
         color: '#333333',
     },
-    box_container: {
-        //border: '2px solid green',
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-        width: '80%',
-        flexWrap: 'nowrap',
-        zIndex: '2',
-    },
-    jokecomponent: {
-        minWidth: '250px',
-        [theme.breakpoints.down('md')]: {
-            margin: '0 auto',
-        },
-    },
 
     right_block: {
-        border: '5px solid blue',
         backgroundColor: '#F8F8F8',
-        paddingTop: '40px',
-
-
         [theme.breakpoints.up('md')]: {
-            width: '35%',
+            paddingTop: '40px',
+            width: '40%',
             minHeight: '100vh',
-            //height: '100%',
         },
         [theme.breakpoints.only('sm')]: {
+            paddingTop: '40px',
             marginLeft: '15%',
-            //zIndex: '1',
-            //minHeight: '100vh',
             width: '70%',
-            //height: '100%',
-            //flexGrow: 2,
-            //zIndex: '1',
             position: 'absolute',
             top: '0px',
             bottom: '0px',
         },
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.only('xs')]: {
+            display: 'flex',
             position: 'absolute',
             width: '100%',
             top: '0px',
             bottom: '0px',
-            //zIndex: '1',
+            justifyContent: 'center'
         },
 
     },
-    favorite_sm: {
-        //border: '2px solid purple',
+    favorite_box: {
         [theme.breakpoints.down('sm')]: {
             marginTop: '100px',
         },
+        [theme.breakpoints.only('xs')]: {
+            maxWidth: '340px',
+            width: '100%',
+
+        },
     },
     text_favorite: {
-        //border: '2px solid yellow',
         fontWeight: '500',
         fontSize: '20px',
         lineHeight: '28px',
         color: '#ABABAB',
-        margin: '2px 0 0 10px',
+        margin: '-5px 0 0 10px',
     },
     icon: {
         width: '28px',
         height: '28px',
     },
     icon_pouse: {
-        //border: '2px solid yellow',
         width: '28px',
         height: '28px',
         transform: 'rotate(90deg)',
@@ -174,19 +150,17 @@ const useStyles = makeStyles((theme) => ({
 
 const LayoutComponent = ({ width }) => {
     const classes = useStyles();
-    
+
     const [checkHidden, onCheckHidden] = useState(false)
     const changeCheck = () => {
         onCheckHidden(!checkHidden)
     }
-    console.log('checkHidden', checkHidden)
 
     return (
         <React.Fragment>
             <CssBaseline />
-            <Container maxWidth='xl' style={{ height: '100%', width: '100%' }} >
-
-                <Grid container spacing={3}
+            <Container maxWidth='xl'>
+                <Grid container spacing={5}
                     className={(!checkHidden)
                         ? classes.root
                         :
@@ -198,7 +172,7 @@ const LayoutComponent = ({ width }) => {
                         <Grid container item className={classes.container}  >
                             <Grid >
                                 <Typography className={classes.header} gutterBottom >
-                                    MSI 2020 {width}
+                                    MSI 2020
                                 </Typography>
                             </Grid>
                             <Grid container className={classes.box_container} >
@@ -209,8 +183,8 @@ const LayoutComponent = ({ width }) => {
                                         <CancelIcon onClick={changeCheck} className={classes.icon} />
                                     }
                                     <Typography className={classes.text_favorite} gutterBottom >
-                                        Favorite-left
-                                            </Typography>
+                                        Favorite
+                                    </Typography>
                                 </Hidden>
 
                             </Grid>
@@ -218,12 +192,12 @@ const LayoutComponent = ({ width }) => {
                         <Grid item >
                             <Typography className={classes.header_text} gutterBottom >
                                 Hey!
-                                </Typography>
+                            </Typography>
                         </Grid>
                         <Grid item  >
                             <Typography className={classes.header_text_next} gutterBottom >
                                 Let`s try to find a joke for you:
-                                </Typography>
+                            </Typography>
                         </Grid>
                         <Grid container style={{ marginTop: 43 }}>
                             <Grid >
@@ -241,22 +215,12 @@ const LayoutComponent = ({ width }) => {
                             <Hidden smDown>
                                 <Grid item   >
                                     <Typography className={classes.text_favorite} gutterBottom >
-                                        Favorite11111
-                                        </Typography>
+                                        Favorite
+                                    </Typography>
                                 </Grid>
                             </Hidden>
-                            {/* <Hidden mdUp>
-                                        {checkHidden ?
-                                        <CancelIcon onClick={changeCheck} className={classes.icon} />
-                                        :
-                                        <PauseCircleFilledIcon onClick={changeCheck} className={classes.icon_pouse} />
-                                        }
-                                        <Typography className={classes.text_favorite} gutterBottom >
-                                            Favorite-right
-                                        </Typography>
-                                </Hidden> */}
-                            <Grid item className={classes.favorite_sm}>
-                                <FavoriteComponent checkHidden={checkHidden}/>
+                            <Grid item className={classes.favorite_box}>
+                                <FavoriteComponent checkHidden={checkHidden} />
                             </Grid>
                         </Grid>
                     </Hidden>
