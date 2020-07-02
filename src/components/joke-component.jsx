@@ -3,9 +3,9 @@ import {connect} from 'react-redux'
 
 import BigCart from '../UIkit/bigCart/bigCart'
 import actionFavorite from '../Redux/actions/actionFavorite'
-//import actionDataFavorite from '../Redux/actions/actionDataFavotite'
+import actionDataFavorite from '../Redux/actions/actionDataFavotite'
 
-const JokeComponent = ({data, actionFavorite, actionDataFavorite, favorite}) => {
+const JokeComponent = ({data, actionFavorite, actionDataFavorite, favoriteList, favorite}) => {
 
     let dataChoose = [...data]
 
@@ -23,7 +23,32 @@ const JokeComponent = ({data, actionFavorite, actionDataFavorite, favorite}) => 
     const onChouseFavorite = (elem) => {
          actionFavorite(elem)
         // actionDataFavorite(elem)
+        upgradeAllFavoritData(elem)
     }
+
+    const upgradeAllFavoritData = (item) => {
+
+        const coincidence = favoriteList.find(
+            (elem, i) => elem.value === item.value 
+            )
+    
+            if(!coincidence){
+                actionDataFavorite([...favoriteList, item])
+            
+                
+            }
+            else if( item == favoriteList.slice(-1)[0]){
+                actionDataFavorite([...favoriteList]) 
+                
+            }
+            else{
+                let clearData = favoriteList.filter((el) => el.value  !==   item.value  )
+                actionDataFavorite(clearData)
+                
+            }
+            
+        }
+
 
     const listData = dataChoose.map((elem)=>{
         if(elem){
@@ -53,12 +78,13 @@ const mapStateToProps = (store)=>{
     return{
         data: store.reducerData.data,
         favorite: store.reducerFavorite.favorite,
+        favoriteList: store.reducerDataFavorite.list_favorite,
     }
 }
 
 const mapToDispatchToProps = {
         actionFavorite: actionFavorite,
-        //actionDataFavorite: actionDataFavorite,
+        actionDataFavorite: actionDataFavorite,
 }
 
 export default connect(mapStateToProps, mapToDispatchToProps)(JokeComponent)
