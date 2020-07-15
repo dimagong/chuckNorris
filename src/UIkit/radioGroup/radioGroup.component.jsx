@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux'
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -14,14 +14,14 @@ import { actionRequest } from '../../Redux/actions/actionRequest'
 
 const RadioGroupComponent = ({ actionRequest }) => {
 
-  const[radioRequest, updateRadioReguest] = useState('')
+  const [radioRequest, updateRadioReguest] = useState('')
 
   let buttonRequest, imputRequest = ''
 
   const valueButton = (event) => {
     buttonRequest = event.currentTarget.value
   }
-  
+
   const valueImput = (event) => {
     imputRequest = event.target.value
   }
@@ -33,15 +33,15 @@ const RadioGroupComponent = ({ actionRequest }) => {
   const onButtonSwith = () => {
     chouseRespondRadio(radioRequest)
   }
-  
+
   const chouseRespondRadio = (item) => {
-    if(item === 'random' ){
+    if (item === 'random') {
       actionRequest('random')
       buttonRequest = ''
-    }else if(item === 'from_categories' && buttonRequest !== ''){
+    } else if (item === 'from_categories' && buttonRequest !== '') {
       actionRequest(`random?category=${buttonRequest}`)
-    }else if (item === 'search' && imputRequest !== ''){
-      actionRequest (`search?query=${imputRequest}`)
+    } else if (item === 'search' && imputRequest !== '') {
+      actionRequest(`search?query=${imputRequest}`)
     }
   }
 
@@ -52,8 +52,8 @@ const RadioGroupComponent = ({ actionRequest }) => {
         <FormControlLabel value="from_categories" control={<Radio color="default" />} label="From categories" />
         <ButtonGroupComponent valueButton={valueButton} />
         <FormControlLabel value="search" control={<Radio color="default" />} label="Search" />
-        <ImputComponent valueImput={valueImput} radioRequest={radioRequest}/>
-        <ButtonGetJoke  onButtonSwith={onButtonSwith} />
+        <ImputComponent valueImput={valueImput} radioRequest={radioRequest} />
+        <ButtonGetJoke onButtonSwith={onButtonSwith} />
       </RadioGroup>
     </FormControl>
   );

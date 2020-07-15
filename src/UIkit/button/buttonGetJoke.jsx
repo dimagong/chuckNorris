@@ -4,11 +4,6 @@ import Button from '@material-ui/core/Button';
 //import { LinearProgress } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-  // root: {
-  //   '& > *': {
-  //     marginTop: theme.spacing(3),
-  //   },
-  // },
   root: {
     marginTop: theme.spacing(3),
     background: 'linear-gradient(92.01deg, #8EA7FF 0%, #7291FF 100%)',
@@ -19,26 +14,22 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     lineHeight: '22px',
     color: '#FFFFFF',
-    textTransform:'none',
+    textTransform: 'none',
   },
 }));
 
- const ButtonGetJoke = ({onButtonSwith}) => {
-    const classes = useStyles();
+const ButtonGetJoke = ({ onButtonSwith }) => {
+  const classes = useStyles();
 
-    // const getTarget = (event)=>{
-    //   console.log('eventButtonGetJoke', event.target)
-    // }
-  
-    return (
-        <Button 
-          classes={{root: classes.root}}  
-          variant="outlined" 
-          onClick={onButtonSwith}
-          >
-          Get a joke
-        </Button>
-    );
-  }
+  return (
+    <Button
+      classes={{ root: classes.root }}
+      variant="outlined"
+      onClick={onButtonSwith}
+    >
+      Get a joke
+    </Button>
+  );
+}
 
-  export default ButtonGetJoke
+export default ButtonGetJoke

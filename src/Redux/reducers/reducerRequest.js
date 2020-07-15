@@ -1,4 +1,4 @@
-import {REQUEST} from '../constants'
+import { REQUEST } from '../constants'
 
 const INITIAL_STATE = {
     endpoint: []
@@ -7,12 +7,12 @@ const INITIAL_STATE = {
 const reducerRequest = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case REQUEST:
-            return({
+            return ({
                 ...state,
-                endpoint:  [...action.endpoint]
+                endpoint: [...action.endpoint]
             })
         default:
-           return state
+            return state
     }
 }
 

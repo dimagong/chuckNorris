@@ -1,4 +1,4 @@
-import {GET_DATA} from '../constants'
+import { GET_DATA } from '../constants'
 
 const INITIAL_DATA_STATE = {
     data: []

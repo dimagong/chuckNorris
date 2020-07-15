@@ -232,6 +232,4 @@ const LayoutComponent = ({ width }) => {
     );
 }
 
-
-
 export default withWidth()(LayoutComponent)

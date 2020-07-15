@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import './bigCart-style.scss';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import LaunchIcon from '@material-ui/icons/Launch';
@@ -9,16 +9,16 @@ import Favorite from '@material-ui/icons/Favorite';
 
 const BigCart = ({ id, value, updated_at, categories, onChouseFavorite }) => {
 
-    const dataFavorite = {id, value, updated_at, categories}
+    const dataFavorite = { id, value, updated_at, categories }
 
-    const[flag, onFlag] = useState(false)
+    const [flag, onFlag] = useState(false)
 
     const reversFlagAndFavorite = () => {
         onFlag(!flag)
         onChouseFavorite(dataFavorite)
     }
 
-    
+
 
 
     return (
@@ -43,7 +43,7 @@ const BigCart = ({ id, value, updated_at, categories, onChouseFavorite }) => {
                     <div className='box-data-boxcart'>
                         <div className='describe-boxcart'>Last update: {Math.round(Date.parse(updated_at) / 3600000)} hours ago</div>
                         <div className='categories-boxcart'>
-                            {(categories == '' ) ? 'rendom' : categories}
+                            {(categories == '') ? 'rendom' : categories}
                         </div>
                     </div>
                 </div>
